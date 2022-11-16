@@ -1,10 +1,10 @@
-import express from 'express';
-import mongoose from 'mongoose';
+import express from "express";
+import mongoose from "mongoose";
 
 const DOCKERPORT = 27017;
 mongoose.connect(`mongodb://localhost/${DOCKERPORT}`)
   .then(() => {
-    console.log('Connected with mongoose.');
+    console.log("Connected with mongoose.");
     const app = express();
     const PORT = 3001;
 
@@ -12,4 +12,4 @@ mongoose.connect(`mongodb://localhost/${DOCKERPORT}`)
       console.log(`server is running on http://localhost:${PORT}`);
     });
   })
-  .catch(() => console.log('Failed to connect with mongodb.'));
+  .catch(() => console.log("Failed to connect with mongodb."));
