@@ -5,10 +5,11 @@ import mongoose from "mongoose";
 import { router } from "./router";
 
 const DOCKERPORT = 27017;
+const PORT = 3001;
+
 mongoose.connect(`mongodb://localhost/${DOCKERPORT}`)
   .then(() => {
     console.log("Connected with mongoose.");
-    const PORT = 3001;
     const app = express();
 
     app.use(express.json()); // needs to be before app.use(router)
