@@ -1,20 +1,49 @@
 ## NOTES FOR THIS PROJECT
 
-This project is about an API built using <strong>NodeJs</strong>, <strong>Typescript</strong>, <strong>Docker</strong>, <strong>MongoDB</strong>.
+This project is about an API built using <strong>NodeJs, Typescript, Docker, MongoDB</strong>.
 
-## Quickstart
+### Quickstart
 
 Start by following these terminal commands:
 
-Após realizar as configurações iniciais do projeto <strong>Nodejs + Typescript</strong>, foi configurado o lint a ser utilizado.
+    $ git clone https://github.com/RafaelMariscal/jackedPlanner
+    $ cd api
+    $ yarn
 
-Em seguida, foi definido que o banco de dados a ser utilizado serio o <strong>MongoDB</strong>, o qual foi configurado a partir de um <strong>Docker Container</strong>.
+You can set the both docker and api ports by the constants <strong>'DOCKERPORT'</strong> and <strong>'PORT'</strong> at index.ts file.
 
-Com o Docker já instalado, para configurá-lo iniciar a manipulação de dados com <strong>Mongodb</strong>, basta rodar os comandos a seguir:
+The connection with MongoDB was provided by a docker container, and to make the connection just run theses command lines into terminal:
 
-	docker run --name mongo -p 27017:27017 -d mongo
-	yarn add mongoose
+    docker run --name mongo -p 27017:27017 -d mongo
+    yarn add mongoose
 
-Para lidar com uploads de imagens, foi utilizado o formato de requisição multiform, bem como a utilização do <strong>multer</strong>
+The api will only run if it was stablish a conection with <strong>MongoDB</strong> by <strong>mongoose</strong>
 
+##### To treat image uploads, it was used a miltiform request format, and it was used Multer as well
 
+### Routes
+
+## Categories
+    router.get("/categories", listCategories);
+
+    router.post("/categories", createCategory);
+
+## Products
+
+    router.get("/products", listProducts);
+
+    router.post("/products", upload.single("image"), createProduct);
+
+    router.delete("/products/:productId", deleteProduct);
+
+## Products by Categories
+    router.get("/categories/:categoryId/products", listProductsByCategory);
+
+## Orders
+    router.get("/orders", listOrders);
+
+    router.post("/orders", createOrder);
+
+    router.patch("/orders/:orderId", changeOrderStatus);
+
+    router.delete("/orders/:orderId", cancelOrder);
