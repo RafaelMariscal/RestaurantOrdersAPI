@@ -16,19 +16,20 @@ The connection with MongoDB was provided by a docker container, and to make the 
 
     docker run --name mongo -p 27017:27017 -d mongo
     yarn add mongoose
+### Disclamer
 
-The api will only run if it was stablish a conection with <strong>MongoDB</strong> by <strong>mongoose</strong>
+- The api will only run if it was stablish a conection with <strong>MongoDB</strong> by <strong>mongoose</strong>
 
-##### To treat image uploads, it was used a miltiform request format, and it was used Multer as well
+- To treat image uploads when creating products, it was used a miltiform request format, and it was used Multer as well
 
-### Routes
+## API Routes
 
-## Categories
+#### Categories
     router.get("/categories", listCategories);
 
     router.post("/categories", createCategory);
 
-## Products
+#### Products
 
     router.get("/products", listProducts);
 
@@ -36,10 +37,10 @@ The api will only run if it was stablish a conection with <strong>MongoDB</stron
 
     router.delete("/products/:productId", deleteProduct);
 
-## Products by Categories
+#### Products by Categories
     router.get("/categories/:categoryId/products", listProductsByCategory);
 
-## Orders
+#### Orders
     router.get("/orders", listOrders);
 
     router.post("/orders", createOrder);
