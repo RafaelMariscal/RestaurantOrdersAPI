@@ -12,6 +12,7 @@ import { listOrders } from "./app/useCases/orders/listOrders";
 import { createOrder } from "./app/useCases/orders/createOrder";
 import { changeOrderStatus } from "./app/useCases/orders/changeOrderStatus";
 import { cancelOrder } from "./app/useCases/orders/cancelOrder";
+import { deleteProduct } from "./app/useCases/products/deleteProduct";
 
 export const router = Router();
 
@@ -27,22 +28,20 @@ const upload = multer({
   })
 });
 
+// Categories
 router.get("/categories", listCategories);
-
 router.post("/categories", createCategory);
 
+// Products
 router.get("/products", listProducts);
-
 router.post("/products", upload.single("image"), createProduct);
+router.delete("/products/:productId", deleteProduct);
 
+// Products by Categories
 router.get("/categories/:categoryId/products", listProductsByCategory);
 
+// Orders
 router.get("/orders", listOrders);
-
 router.post("/orders", createOrder);
-
-// Change order status
 router.patch("/orders/:orderId", changeOrderStatus);
-
-// Delete/cancel order (Soft delete)
 router.delete("/orders/:orderId", cancelOrder);
