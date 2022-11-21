@@ -8,9 +8,9 @@ export async function deleteProduct(req: Request, res: Response) {
 
     await Product.findByIdAndDelete(productId);
 
-    res.status(204);
+    return res.sendStatus(204);
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 }

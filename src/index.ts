@@ -12,6 +12,12 @@ mongoose.connect(`mongodb://localhost/${DOCKERPORT}`)
     console.log("Connected with mongoose.");
     const app = express();
 
+    app.use((req, res, next) => {
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+      res.setHeader("Access-Control-Allow-Methods", "*");
+      res.setHeader("Access-Control-Allow-Headers", "*");
+      next();
+    });
     app.use(express.json()); // needs to be before app.use(router)
     app.use(router);
     // this is use because, instead a dirpath, we need to provide the file itself

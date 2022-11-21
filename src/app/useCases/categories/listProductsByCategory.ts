@@ -8,9 +8,9 @@ export async function listProductsByCategory(req: Request, res: Response) {
 
     const product = await Product.find().where("category").equals(categoryId);
 
-    res.json(product);
+    return res.json(product);
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 }

@@ -16,11 +16,19 @@ The connection with MongoDB was provided by a docker container, and to make the 
 
     docker run --name mongo -p 27017:27017 -d mongo
     yarn add mongoose
+
 ### Disclamer
 
 - The api will only run if it was stablish a conection with <strong>MongoDB</strong> by <strong>mongoose</strong>
 
 - To treat image uploads when creating products, it was used a miltiform request format, and it was used Multer as well
+
+### STARTING API
+
+Just follow theses terminal command lines:
+
+    $ yarn build
+    $ yarn start
 
 ## API Routes
 

@@ -10,9 +10,9 @@ export async function createOrder(req: Request, res: Response) {
       products
     });
 
-    res.status(201).json(order);
+    return res.status(201).json(order);
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 }

@@ -17,9 +17,9 @@ export async function createProduct(req: Request, res: Response) {
       ingredients: ingredients ? JSON.parse(ingredients) : []
     });
 
-    res.status(201).json(product);
+    return res.status(201).json(product);
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 }

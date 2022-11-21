@@ -7,9 +7,9 @@ export async function listOrders(req: Request, res: Response) {
     const orders = await Order.find()
       .sort({ createdAt: 1 })
       .populate("products.product");
-    res.json(orders);
+    return res.json(orders);
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 }
